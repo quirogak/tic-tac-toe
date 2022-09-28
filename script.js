@@ -6,6 +6,7 @@ const gameBoard = (() => {
 
         for(i=1 ; i <= 9; i++){
           const boxes = document.createElement("div")
+          boxes.setAttribute("class", "box")
           boxes.setAttribute("id", "box" + i)
           gameContainer.appendChild(boxes)
         }
@@ -39,31 +40,34 @@ const gameLogic = (() => {
 
         }
 
-        console.log(box[4])
 
     }
 
     const checkTurn = () => {
 
-        const players = [player1,player2];
+        const players = [1,2];
         let turn = 0;
-
         let currentTurn = players[turn]
+        const boxClick = document.querySelectorAll(".box")
 
-       //when a box of the grid is clicked
+        boxClick.forEach(box => {
 
-       turn++;
-       
-       if(turn == players.length) {
-        turn = 0;
-       }
+         box.addEventListener("click", () => {
 
+            turn++;
+            
+            if (turn == 1){
+                box.textContent= "X"
+            }
+            else {
+                box.textContent= "O"
+            }
 
-
-
-
-
-       
+            if(turn == players.length) {
+                    turn = 0;
+                   }
+            })
+        })
 
     }
 
@@ -75,3 +79,4 @@ const gameLogic = (() => {
 })();
 
 gameLogic.resultCheck()
+gameLogic.checkTurn()
