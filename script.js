@@ -49,6 +49,46 @@ const gameLogic = ((player1,player2) => {
 
         //possible results for a win
 
+        if(content[0] == content[1] && content[0] == content[2] && content[0] != ""){
+            console.log("winner")
+
+        }
+        if(content[0] == content[3] && content[0] == content[6] && content[0] != ""){
+            console.log("winner")
+
+        }
+        if(content[1] == content[4] && content[1] == content[7] && content[1] != ""){
+            console.log("winner")
+
+        }
+        if(content[2] == content[5] && content[2] == content[8] && content[2] != ""){
+            console.log("winner")
+        }
+
+        if(content[3] == content[4] && content[3] == content[5] && content[3] != ""){
+            console.log("winner")
+        }
+
+        if(content[6] == content[7] && content[6] == content[8] && content[6] != ""){
+            console.log("winner")
+        }
+
+        if(content[0] == content[4] && content[0] == content[8] && content[0] != ""){
+            console.log("winner")
+        }
+
+        if(content[2] == content[4] && content[2] == content[6] && content[2] != ""){
+            console.log("winner")
+        }
+
+    else if(!content.includes("")){
+     console.log("draw")
+    }
+
+
+        
+    
+        
        
         
 
