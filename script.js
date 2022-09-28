@@ -4,7 +4,7 @@ const gameBoard = (() => {
 
     const genGrid = () => {
 
-        for(i=1 ; i <= 9; i++){
+        for(i=0 ; i < 9; i++){
           const boxes = document.createElement("div")
           boxes.setAttribute("class", "box")
           boxes.setAttribute("id", "box" + i)
@@ -15,6 +15,7 @@ const gameBoard = (() => {
 
     return {genGrid}
     
+    //make buttons and a current turn display for later.
 
 })();
 
@@ -26,28 +27,40 @@ const playerFactory = (name,selection) =>{
     const playerWin = "Congratulations," + name + "you won this game as"+ selection +"!"
 
     return {playerWin}
+
 }
 
 
-const gameLogic = (() => {
+const gameLogic = ((player1,player2) => {
 
     const resultCheck = () => {
         
         let box = []
 
-        for(i=1 ; i <= 9; i++){
-            box[i] = document.querySelector("#box"+i)
+        //array with every box result in order
+        let content = []
 
+        for(i=0 ; i < 9; i++){
+            box[i] = document.querySelector("#box"+i)
+            content[i] = box[i].textContent
         }
+
+        console.log(content)
+
+        //possible results for a win
+
+       
+        
+
+        
 
 
     }
 
-    const checkTurn = () => {
+    const playTurn = () => {
 
         const players = [1,2];
         let turn = 0;
-        let currentTurn = players[turn]
         const boxClick = document.querySelectorAll(".box")
 
         boxClick.forEach(box => {
@@ -55,7 +68,7 @@ const gameLogic = (() => {
          box.addEventListener("click", () => {
 
             turn++;
-            
+
             if (turn == 1){
                 box.textContent= "X"
             }
@@ -67,6 +80,8 @@ const gameLogic = (() => {
                     turn = 0;
                    }
             })
+
+        box.addEventListener("click", (resultCheck))
         })
 
     }
@@ -74,9 +89,8 @@ const gameLogic = (() => {
 
 
 
-    return {resultCheck,checkTurn}
+    return {playTurn}
 
 })();
 
-gameLogic.resultCheck()
-gameLogic.checkTurn()
+gameLogic.playTurn()
