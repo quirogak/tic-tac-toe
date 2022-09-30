@@ -33,7 +33,14 @@ const playerFactory = (name,selection) =>{
 
 const gameLogic = ((player1,player2) => {
 
+    const resultMessage = document.createElement("div")
+    const container = document.querySelector(".messages")
+    resultMessage.setAttribute("class", "result-msg")
+    container.appendChild(resultMessage)
+
     const resultCheck = () => {
+
+        
         
         let box = []
 
@@ -46,56 +53,67 @@ const gameLogic = ((player1,player2) => {
         }
 
         console.log(content)
+        console.log(resultMessage.textContent)
 
         //possible results for a win
 
+        let endGame = 0;
+
+
+        // if content[0] == X or O, we know which player won.
         if(content[0] == content[1] && content[0] == content[2] && content[0] != ""){
+            endGame++
             console.log("winner")
 
         }
         if(content[0] == content[3] && content[0] == content[6] && content[0] != ""){
+            endGame++
             console.log("winner")
 
         }
         if(content[1] == content[4] && content[1] == content[7] && content[1] != ""){
+            endGame++
             console.log("winner")
 
         }
         if(content[2] == content[5] && content[2] == content[8] && content[2] != ""){
+            endGame++
             console.log("winner")
         }
 
         if(content[3] == content[4] && content[3] == content[5] && content[3] != ""){
+            endGame++
             console.log("winner")
         }
 
         if(content[6] == content[7] && content[6] == content[8] && content[6] != ""){
+            endGame++
             console.log("winner")
         }
 
         if(content[0] == content[4] && content[0] == content[8] && content[0] != ""){
+            endGame++
             console.log("winner")
         }
 
         if(content[2] == content[4] && content[2] == content[6] && content[2] != ""){
+            endGame++
             console.log("winner")
         }
+        if (!content.includes("") && endGame == 0){
+            endGame = 2
+            console.log("draw")
+           }
 
-    else if(!content.includes("")){
-     console.log("draw")
-    }
+        //win message
 
+        if(endGame != 0){
+            resultMessage.textContent = "1"
+        }
 
-        
+        } 
     
-        
-       
-        
-
-        
-
-
-    }
+  
 
     const playTurn = () => {
 
@@ -105,9 +123,9 @@ const gameLogic = ((player1,player2) => {
 
         boxClick.forEach(box => {
 
-         box.addEventListener("click", () => {
-
+        const turnSwitch = () => {
             turn++;
+
 
             if (turn == 1){
                 box.textContent= "X"
@@ -119,17 +137,46 @@ const gameLogic = ((player1,player2) => {
             if(turn == players.length) {
                     turn = 0;
                    }
-            })
+
+
+            }
+        
+
+        box.addEventListener("click", (turnSwitch),{once:true});
 
         box.addEventListener("click", (resultCheck))
-        })
+        //disable the eventListeners when the game is over.
 
+        for (let i = 0; i < boxClick.length; i++) {
+
+            boxClick[i].addEventListener("click", () => {
+                if(resultMessage.textContent == "1"){
+                    
+                    box.removeEventListener("click",(resultCheck))
+                    box.removeEventListener("click", (turnSwitch),{once:true});
+
+                    
+                    
+                
+                  }
+            });
+        }
+        
+            
+        })
+    
+    
+
+     
+    
     }
 
+ 
+    
 
 
 
-    return {playTurn}
+    return {playTurn,resultMessage}
 
 })();
 
