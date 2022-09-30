@@ -139,37 +139,37 @@ const gameLogic = ((player1,player2) => {
                    }
 
 
+            }        
+            
+            for (let i = 0; i < boxClick.length; i++) {
+
+                boxClick[i].addEventListener("click", () => {
+                    if(resultMessage.textContent == "1"){
+                
+                     box.removeEventListener("click",(resultCheck))
+                     box.removeEventListener("click", (turnSwitch),{once:true})
+                    }
+                })
             }
-        
+    
+                          
 
         box.addEventListener("click", (turnSwitch),{once:true});
 
         box.addEventListener("click", (resultCheck))
-        //disable the eventListeners when the game is over.
 
-        for (let i = 0; i < boxClick.length; i++) {
-
-            boxClick[i].addEventListener("click", () => {
-                if(resultMessage.textContent == "1"){
-                    
-                    box.removeEventListener("click",(resultCheck))
-                    box.removeEventListener("click", (turnSwitch),{once:true});
-
-                    
-                    
-                
-                  }
-            });
-        }
+       
+        
+     })
         
             
-        })
+    }
     
     
 
      
     
-    }
+    
 
  
     
