@@ -15,7 +15,7 @@ body {
 
 .main-content {
     width: 100%;
-    height: 88vh;
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,8 +27,72 @@ body {
     display: grid;
     grid-template: repeat(3,1fr) / repeat(3,1fr);
     border: 1px solid black;
+    margin-top: 10vh;
 }
 
 .game-board > div {
     border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10vh;
 }
+
+.messages {
+    margin-top: 8vh;
+    width: 100%;
+    height: 20vh;
+}
+
+.player-selection {
+    width: 80vh;
+    height: 50vh;
+    background-color: rgb(106, 191, 240);
+    border-radius: 2vh;
+    position: relative;
+}
+
+li {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3vh;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8.5vh;
+    align-items: center;
+    padding: 20px;
+    margin: 20px;
+    background-color: rgb(243, 243, 243);
+    border-radius: 2vh;
+
+}
+
+input {
+    border-radius: 1vh;
+    border: 0px;
+    width: 30vh;
+    height: 4vh;
+    font-size: 1.5rem;
+    border: 1px solid black;
+}
+
+button {
+    height: 5vh;
+    width: 20vh;
+    border: 1px solid black;
+    border-radius: 1vh;
+    background-color:    rgb(106, 191, 240);
+}
+
+button:hover {
+    background-color:  rgb(119, 212, 255);
+}
+
+
