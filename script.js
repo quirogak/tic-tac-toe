@@ -1,8 +1,14 @@
 const gameBoard = (() => {
 
-    const gameContainer = document.querySelector(".game-board")
-
+   
     const genGrid = () => {
+
+        const mainContainer = document.querySelector(".main-content")
+        const gameContainer = document.createElement("div")
+        gameContainer.className = ("game-board")
+        mainContainer.appendChild(gameContainer)
+
+    
 
         for(i=0 ; i < 9; i++){
           const boxes = document.createElement("div")
@@ -19,29 +25,31 @@ const gameBoard = (() => {
 
 })();
 
-gameBoard.genGrid()
-
 
 const playerFactory = (name,selection) =>{
 
-    const playerWin = "Congratulations," + name + "you won this game as"+ selection +"!"
+    this.name = name
+    this.selection = selection
 
-    return {playerWin}
+
+    return {name,selection}
 
 }
 
 
-const gameLogic = ((player1,player2) => {
 
-    const resultMessage = document.createElement("div")
+const gameLogic = (() => {
+
     const container = document.querySelector(".messages")
+    const resultMessage = document.createElement("div")
     resultMessage.setAttribute("class", "result-msg")
     container.appendChild(resultMessage)
 
-    const resultCheck = () => {
 
+    const resultCheck = (player1,player2) => {
         
         
+
         let box = []
 
         //array with every box result in order
@@ -53,7 +61,6 @@ const gameLogic = ((player1,player2) => {
         }
 
         console.log(content)
-        console.log(resultMessage.textContent)
 
         //possible results for a win
 
@@ -108,20 +115,23 @@ const gameLogic = ((player1,player2) => {
         //win message
 
         if(endGame != 0){
-            resultMessage.textContent = "1"
+            resultMessage.textContent = player1.name
         }
 
         } 
     
   
 
-    const playTurn = () => {
+    const playTurn = (player1,player2) => {
 
-        const players = [1,2];
+        const players = [player1,player2];
         let turn = 0;
         const boxClick = document.querySelectorAll(".box")
+        const check = function() {
+            resultCheck(player1,player2)
+        }
 
-        boxClick.forEach(box => {
+     boxClick.forEach(box => {
 
         const turnSwitch = () => {
             turn++;
@@ -141,13 +151,13 @@ const gameLogic = ((player1,player2) => {
 
             }        
             
-            for (let i = 0; i < boxClick.length; i++) {
-
+         for (let i = 0; i < boxClick.length; i++) {
                 boxClick[i].addEventListener("click", () => {
-                    if(resultMessage.textContent == "1"){
+                    if(resultMessage.textContent != ""){
                 
-                     box.removeEventListener("click",(resultCheck))
+                     box.removeEventListener("click",(check))
                      box.removeEventListener("click", (turnSwitch),{once:true})
+                     
                     }
                 })
             }
@@ -156,28 +166,56 @@ const gameLogic = ((player1,player2) => {
 
         box.addEventListener("click", (turnSwitch),{once:true});
 
-        box.addEventListener("click", (resultCheck))
-
-       
-        
-     })
-        
-            
-    }
-    
-    
-
-     
-    
-    
-
+        box.addEventListener("click", (check))
  
+     })
+               
+    }
+
     
-
-
-
-    return {playTurn,resultMessage}
+ return {playTurn}
 
 })();
 
-gameLogic.playTurn()
+
+const newGame = (() => {
+    
+
+
+    const playerSelection = () => {
+
+    const playersContainer = document.querySelector(".player-selection")
+    const submitButton = document.querySelector("#submit")
+
+
+    submitButton.addEventListener("click", () => {
+        gameBoard.genGrid()
+    })
+
+    submitButton.addEventListener("click", () => {
+
+        const player1Input = document.getElementById("name").value
+        const player2Input = document.getElementById("name2").value
+        const player1 = playerFactory(player1Input,"X")
+        const player2 = playerFactory(player2Input, "O")
+
+        gameLogic.playTurn(player1,player2)
+    })
+
+    submitButton.addEventListener("click", () => {
+        playersContainer.remove()
+    })
+
+
+    
+
+
+
+    }
+
+    return {playerSelection}
+
+})();
+
+newGame.playerSelection()
+
