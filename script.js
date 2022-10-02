@@ -66,7 +66,7 @@ const gameLogic = (() => {
 
         //possible results for a win
         // if content[0] == X or O, we know which player won.
-        
+
         if(content[0] == content[1] && content[0] == content[2] && content[0] != ""){
             endGame++
             console.log("winner")
@@ -168,7 +168,17 @@ const gameLogic = (() => {
             endGame = 2
             resultMessage.textContent = "Draw!"
            }
+        
+        if(endGame != 0){
+            const restartButton = document.createElement("button")
+            restartButton.setAttribute("class", "restart")
+            container.appendChild(restartButton)
+            restartButton.textContent = "New game"
 
+           restartButton.addEventListener("click", () => {
+            window.location.reload()
+           })
+        }
 
         
         } 
