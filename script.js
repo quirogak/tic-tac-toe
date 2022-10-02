@@ -196,10 +196,31 @@ const newGame = (() => {
 
         const player1Input = document.getElementById("name").value
         const player2Input = document.getElementById("name2").value
-        const player1 = playerFactory(player1Input,"X")
-        const player2 = playerFactory(player2Input, "O")
 
-        gameLogic.playTurn(player1,player2)
+        //if the players don't input any names.
+        if (player1Input == "" && player2Input == ""){
+            const player1 = playerFactory("Player 1","X")
+            const player2 = playerFactory("Player 2", "O")
+            gameLogic.playTurn(player1,player2)
+        }
+
+        else if (player1Input == "" && player2Input != ""){
+            const player1 = playerFactory("Player 1","X")
+            const player2 = playerFactory(player2Input, "O")
+            gameLogic.playTurn(player1,player2)
+        }
+        else if (player2Input == "" && player1Input != ""){
+            const player1 = playerFactory(player1Input,"X")
+            const player2 = playerFactory("Player 2", "O")
+            gameLogic.playTurn(player1,player2)
+        }
+        else{
+            const player1 = playerFactory(player1Input,"X")
+            const player2 = playerFactory(player2Input, "O")
+            gameLogic.playTurn(player1,player2)
+        }
+
+       
     })
 
     submitButton.addEventListener("click", () => {
