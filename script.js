@@ -67,7 +67,6 @@ const gameLogic = (() => {
 
         if(content[0] == content[1] && content[0] == content[2] && content[0] != ""){
             endGame++
-            console.log("winner")
         
          if(content[0] == "X") {
             resultMessage.textContent = player1.name+" wons!"
