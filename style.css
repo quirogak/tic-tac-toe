@@ -63,8 +63,9 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: white;
+    gap: 2vh;
 }
 
 .player-selection {
@@ -94,7 +95,7 @@ ul {
     padding: 20px;
     margin: 20px;
     background-color: rgb(46, 46, 46);
-    border: 1px solid rgb(0, 255, 55);
+    border: 1px solid rgb(0, 255, 115);
     border-radius: 2vh;
 
 }
@@ -106,6 +107,11 @@ input {
     height: 4vh;
     font-size: 1.5rem;
     background-color: rgb(223, 223, 223);
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid rgb(0, 162, 255);
 }
 
 
