@@ -176,7 +176,15 @@ const gameLogic = (() => {
             restartButton.textContent = "New game"
 
            restartButton.addEventListener("click", () => {
-            window.location.reload()
+            const board = document.querySelector(".game-board")
+            resultMessage.textContent = ""
+            restartButton.remove()
+            board.remove()
+            
+            endGame = 0
+            gameBoard.genGrid()
+            playTurn(player1,player2)
+            
            })
         }
 
