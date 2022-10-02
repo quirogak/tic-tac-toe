@@ -62,62 +62,115 @@ const gameLogic = (() => {
 
         console.log(content)
 
-        //possible results for a win
-
         let endGame = 0;
 
-
+        //possible results for a win
         // if content[0] == X or O, we know which player won.
+        
         if(content[0] == content[1] && content[0] == content[2] && content[0] != ""){
             endGame++
             console.log("winner")
-
+        
+         if(content[0] == "X") {
+            resultMessage.textContent = player1.name+" wons!"
         }
+        else {
+            resultMessage.textContent = player2.name+" wons!"
+        }
+        }
+
         if(content[0] == content[3] && content[0] == content[6] && content[0] != ""){
             endGame++
             console.log("winner")
+        
+         if(content[0] == "X") {
+               resultMessage.textContent = player1.name+" wons!"
+             }
+             else {
+                resultMessage.textContent = player2.name+" wons!"
+             }
+             }
 
-        }
         if(content[1] == content[4] && content[1] == content[7] && content[1] != ""){
             endGame++
             console.log("winner")
 
-        }
+            if(content[1] == "X") {
+                resultMessage.textContent = player1.name+" wons!"
+             }
+             else {
+                resultMessage.textContent = player2.name+" wons!"
+             }
+             }
+
         if(content[2] == content[5] && content[2] == content[8] && content[2] != ""){
             endGame++
             console.log("winner")
-        }
+        
+            if(content[2] == "X") {
+                resultMessage.textContent = player1.name+" wons!"
+             }
+             else {
+                resultMessage.textContent = player2.name+" wons!"
+             }
+             }
 
         if(content[3] == content[4] && content[3] == content[5] && content[3] != ""){
             endGame++
             console.log("winner")
-        }
+        
+            if(content[3] == "X") {
+                resultMessage.textContent = player1.name+" wons!"
+             }
+             else {
+                resultMessage.textContent = player2.name+" wons!"
+             }
+             }
 
         if(content[6] == content[7] && content[6] == content[8] && content[6] != ""){
             endGame++
             console.log("winner")
-        }
+        
+            if(content[6] == "X") {
+                resultMessage.textContent = player1.name+" wons!"
+             }
+             else {
+                resultMessage.textContent = player2.name+" wons!"
+             }
+             }
 
         if(content[0] == content[4] && content[0] == content[8] && content[0] != ""){
             endGame++
             console.log("winner")
-        }
+        
+            if(content[0] == "X") {
+                resultMessage.textContent = player1.name+" wons!"
+             }
+             else {
+                resultMessage.textContent = player2.name+" wons!"
+             }
+             }
 
         if(content[2] == content[4] && content[2] == content[6] && content[2] != ""){
             endGame++
             console.log("winner")
-        }
+        
+            if(content[2] == "X") {
+                resultMessage.textContent = player1.name+" wons!"
+             }
+             else {
+                resultMessage.textContent = player2.name+" wons!"
+             }
+             }
+
+
         if (!content.includes("") && endGame == 0){
             endGame = 2
-            console.log("draw")
+            resultMessage.textContent = "Draw!"
            }
 
-        //win message
 
-        if(endGame != 0){
-            resultMessage.textContent = player1.name
-        }
-
+        
         } 
     
   
