@@ -28,10 +28,6 @@ const gameBoard = (() => {
 
 const playerFactory = (name,selection) =>{
 
-    this.name = name
-    this.selection = selection
-
-
     return {name,selection}
 
 }
